@@ -1,0 +1,150 @@
+.rounded-bars
+  .apexcharts-bar-series.apexcharts-plot-series
+  .apexcharts-series
+  path {
+  clip-path: inset(0 0 5% 0 round 20px);
+}
+
+.rounded-circle .apexcharts-pie-area {
+  clip-path: inset(0 13% 33% 11% round 61px);
+}
+
+body .apexcharts-tooltip {
+  border-radius: 16px;
+}
+
+body .apexcharts-tooltip-marker {
+  border-radius: 4px;
+  width: 12px;
+  height: 4px;
+}
+
+body .apexcharts-tooltip.apexcharts-theme-dark {
+  background: rgba(17, 28, 45, 0.8);
+
+  .apexcharts-tooltip-title {
+    border-bottom: 0;
+    background: rgba(17, 28, 45, 0.7);
+  }
+}
+
+body .apexcharts-tooltip-series-group {
+  padding: 0 14px;
+}
+
+body .apexcharts-tooltip-title {
+  padding: 10px 14px;
+}
+
+.timeline-tabs .timeline .timeline-icon {
+  position: relative;
+}
+.timeline-tabs .timeline .timeline-icon:after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  height: 20px;
+  width: 1px;
+  background-color: var(--color-border);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.timeline-tabs .timeline:last-child .timeline-icon:after {
+  height: 0;
+}
+.timeline-tabs .timeline-list {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 8px;
+}
+.timeline-tabs .timeline-list:last-child {
+  border-bottom: 0 !important;
+}
+
+#vector-map svg .dxm-background {
+  stroke: transparent !important;
+}
+#vector-map svg path {
+  fill: #c9d6de !important;
+  stroke-width: 0.2px;
+}
+.dxm-tooltip svg path {
+  fill: var(--color-dark) !important;
+  stroke-width: 0;
+}
+.dxm-tooltip div {
+  color: #fff !important;
+  font-family: inherit !important;
+}
+
+/* From Uiverse.io by ZacharyCrespin */ 
+.spinner {
+  --size: 50px;
+  --color: #00b808;
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.spinner::after,.spinner::before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  width: var(--size);
+  height: var(--size);
+  top: 50%;
+  animation: up 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+  left: 50%;
+  background: var(--color);
+  box-shadow: 0 0 calc(var(--size) / 3) rgba(0, 0, 0, 0.25);
+}
+
+.spinner::after {
+  background: var(--color);
+  top: calc(50% - var(--size));
+  left: calc(50% - var(--size));
+  animation: down 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+}
+
+@keyframes down {
+  0%, 100% {
+    transform: none;
+  }
+
+  25% {
+    transform: translateX(100%);
+  }
+
+  50% {
+    transform: translateX(100%) translateY(100%);
+  }
+
+  75% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes up {
+  0%, 100% {
+    transform: none;
+  }
+
+  25% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(-100%) translateY(-100%);
+  }
+
+  75% {
+    transform: translateY(-100%);
+  }
+}
+
+.discount_sec div{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}

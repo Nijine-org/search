@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./database.sqlite"
+}
+
+enum TokenStatus {
+  ACTIVE
+  AVAILABLE
+  EXPIRED
+}
+
+model Token {
+  id        String      @id @default(uuid())  // Unique identifier
+  name      String  
+  token     String      @unique               // Store the token itself
+  status    TokenStatus @default(AVAILABLE)        // Token status (active or expired)
+  createdAt DateTime    @default(now())         // Timestamp for when token was created
+}

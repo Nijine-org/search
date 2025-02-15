@@ -1,0 +1,88 @@
+:root {
+  --color-info: #46caeb;
+  --color-success: #00ceb6;
+  --color-warning: #ffb900;
+  --color-error: #ff6692;
+  --color-lightsuccess: #00ceb625;
+  --color-lighterror: #ff669230;
+  --color-lightinfo: #46caeb25;
+  --color-lightwarning: #ffb90025;
+  --color-white: #fff;
+  --color-dark: #111c2d;
+  --color-border: #e0e6eb;
+  --color-bordergray: #cfd6db;
+  --color-darkborder: #333f55;
+  --color-link: #2a3547;
+  --color-muted: #eff4fa;
+  --color-darkmuted: #2a3851;
+  --color-darklink: #7b8893;
+  --color-lightgray: #f8fafd;
+  --color-lighthover: #f6f9fc;
+  --color-darkgray: #1a2537;
+  --color-error-emphasis: #d9577c;
+  --color-warning-emphasis: #d9941a;
+  --color-success-emphasis: #10bd9d;
+  --color-info-emphasis: #3cacc8;
+  --color-surface-ld: #ffffff;
+}
+
+[data-color-theme='BLUE_THEME'] {
+  --color-primary: #00a1ff;
+  --color-secondary: #8965e5;
+  --color-primary-emphasis: #0091e5;
+  --color-secondary-emphasis: #7c57d9;
+  --color-lightprimary: #00a1ff20;
+  --color-lightsecondary: #8965e520;
+}
+
+[data-color-theme='AQUA_THEME'] {
+  --color-primary: #0074ba;
+  --color-bghover: #00639e;
+  --color-primary-emphasis: #00639e;
+  --color-secondary-emphasis: #3cb7a0;
+  --color-secondary: #47d7bc;
+  --color-lightprimary: #0074ba20;
+  --color-lightsecondary: #00639e20;
+}
+
+[data-color-theme='PURPLE_THEME'] {
+  --color-primary: #763ebd;
+  --color-primary-emphasis: #6435a1;
+  --color-secondary-emphasis: #7fb0b5;
+  --color-secondary: #49beff;
+  --color-lightprimary: #763ebd20;
+  --color-lightsecondary: #49beff20;
+}
+
+[data-color-theme='GREEN_THEME'] {
+  --color-primary: #00b808;
+  /* New primary color */
+  --color-primary-emphasis: #009a06;
+  /* Slightly darker version of primary */
+  --color-secondary: #b8e86a;
+  /* Complementary greenish-yellow */
+  --color-secondary-emphasis: #9bcc56;
+  /* Darker version of secondary */
+  --color-lightprimary: #00b80820;
+  /* Transparent variant of primary */
+  --color-lightsecondary: #b8e86a20;
+  /* Transparent variant of secondary */
+}
+
+[data-color-theme='CYAN_THEME'] {
+  --color-primary: #01c0c8;
+  --color-primary-emphasis: #01a3aa;
+  --color-secondary-emphasis: #d58066;
+  --color-secondary: #fb9678;
+  --color-lightprimary: #01c0c820;
+  --color-lightsecondary: #fb967820;
+}
+
+[data-color-theme='ORANGE_THEME'] {
+  --color-primary: #fa896b;
+  --color-primary-emphasis: #d5745b;
+  --color-secondary-emphasis: #00639e;
+  --color-secondary: #0074ba;
+  --color-lightprimary: #fa896b20;
+  --color-lightsecondary: #0074ba20;
+}

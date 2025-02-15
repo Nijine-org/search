@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "target": "ES2015", // or higher
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/purchase/*": ["./src/app/(DashboardLayout)/purchase/*"],
+      "@/vendor/*": ["./src/app/(DashboardLayout)/purchase/vendor/*"],
+      "@/expense/*": ["./src/app/(DashboardLayout)/purchase/expenses/*"],
+      "@/bank/*": ["./src/app/(DashboardLayout)/bank/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "index.js"
+  ],
+  "exclude": ["node_modules"]
+}
