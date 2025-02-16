@@ -7,6 +7,7 @@ const getActiveToken = async (): Promise<Key> => {
   const activeToken = await prisma.token.findFirst({
     where: { status: 'ACTIVE' },
   });
+  if (!activeToken) throw new Error('No active token found');
   return activeToken;
 };
 

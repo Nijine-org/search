@@ -1,17 +1,9 @@
 'use client';
 import 'flowbite';
 import React, { useState, useEffect, useContext } from 'react';
-import { DarkThemeToggle, Navbar } from 'flowbite-react';
-import Search from './Search';
+import { Navbar } from 'flowbite-react';
 import { Icon } from '@iconify/react';
-import AppLinks from './AppLinks';
-import Messages from './Messages';
-import Notifications from './Notifications';
-import Profile from './Profile';
 import { CustomizerContext } from '@/app/context/customizerContext';
-
-import { Language } from './Language';
-import FullLogo from '../../shared/logo/FullLogo';
 import MobileHeaderItems from './MobileHeaderItems';
 import { Drawer } from 'flowbite-react';
 import MobileSidebar from '../sidebar/MobileSidebar';

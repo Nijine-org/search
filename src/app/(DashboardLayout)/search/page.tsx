@@ -28,8 +28,6 @@ const page = async ({ searchParams }: Props) => {
   // 68a7df0ab097eff93e3d4d8c60499ed7
   //
   const apiKey = await getActiveToken();
-  console.log('apiKey', apiKey);
-
   const url = `https://search.ch/tel/api/${createQueryString(params)}&key=${apiKey.token}`;
   if (isSearched) listResponse = await fetchXMLData(url, [url]);
   else
@@ -42,7 +40,6 @@ const page = async ({ searchParams }: Props) => {
     <div>
       {listResponse.state}
       <SearchComponent />
-      {/* <Test data={listResponse} /> */}
       <Search data={listResponse.data} />
     </div>
   );

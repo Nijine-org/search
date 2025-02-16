@@ -1,9 +1,9 @@
+import React from 'react';
 import { Icon } from '@iconify/react';
 import Messages from './Messages';
 import Notifications from './Notifications';
-import Profile from './Profile';
 import { Language } from './Language';
-import { DarkThemeToggle, Navbar } from 'flowbite-react';
+import { Navbar } from 'flowbite-react';
 import AppLinks from './AppLinks';
 import { CustomizerContext } from '@/app/context/customizerContext';
 import { useContext } from 'react';
