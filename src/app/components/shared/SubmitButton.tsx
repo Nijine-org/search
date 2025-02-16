@@ -2,7 +2,8 @@
 import React from 'react';
 import { Button } from 'flowbite-react';
 
-export default function SubmitButton() {
+type Props = { text?: string };
+export default function SubmitButton({ text = 'Submit' }: Props) {
   ('');
 
   return (
@@ -12,7 +13,7 @@ export default function SubmitButton() {
       className="sm:mb-0 mb-3 w-fit"
       aria-disabled={false}
     >
-      Save changes
+      {text}
     </Button>
   );
 }

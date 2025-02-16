@@ -21,7 +21,7 @@ const openNotification = ({
     type,
     message: title,
     description,
-    placement: 'bottomRight',
+    placement: 'topRight',
   });
 };
 const disabledDate = (current: Dayjs | null): boolean => {

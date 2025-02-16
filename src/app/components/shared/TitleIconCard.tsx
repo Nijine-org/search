@@ -4,7 +4,6 @@ import { CustomizerContext } from '@/app/context/customizerContext';
 import { Card, Button } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { Icon } from '@iconify/react';
-import Link from 'next/link';
 import { Popover } from 'antd';
 
 interface TitleCardProps {
@@ -13,10 +12,8 @@ interface TitleCardProps {
   title?: string;
   icon?: string;
   onDownload?: () => void;
-  addFormLink?: string;
   renderIcon?: () => React.ReactNode;
   disableHeaderBorder?: boolean; // Added prop to control header border
-  formReset?: () => void;
   total?: number;
 }
 
@@ -24,11 +21,9 @@ const TitleIconCard: React.FC<TitleCardProps> = ({
   children,
   className = '',
   title = '',
-  addFormLink,
   onDownload,
   renderIcon,
   disableHeaderBorder = false, // Default to false
-  formReset,
   total,
 }) => {
   const { isCardShadow, isBorderRadius } = useContext(CustomizerContext);
@@ -51,18 +46,11 @@ const TitleIconCard: React.FC<TitleCardProps> = ({
       >
         {title && <h5 className="text-xl font-semibold">{title}</h5>}
         <div className="flex gap-3">
-          {renderIcon && addFormLink && (
-            <Link href={addFormLink} onClick={formReset}>
-              <Button
-                className="flex items-center"
-                size="sm"
-                color="success"
-                onClick={onDownload}
-              >
-                {renderIcon()}
-              </Button>
-            </Link>
-          )}
+          {renderIcon &&
+            // <Button className="flex items-center" size="sm" color="success">
+            renderIcon()
+            // </Button>
+          }
           {onDownload && (
             <Popover content={`Export ${total} records`}>
               <Button

@@ -8,24 +8,28 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-// import { notification } from 'antd';
+import { notification } from 'antd';
 import React, { useEffect } from 'react';
 import TitleIconCard from '@/app/components/shared/TitleIconCard';
 import Table from '@/app/components/shared/Table';
-import { Key } from '../type';
+import { Token } from '../type';
 import { IconDotsVertical } from '@tabler/icons-react';
 import { Dropdown } from 'flowbite-react';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import TokenFormModal from './TokenFormModal';
+import { tokenFormInitialValues } from '../_json/formInitialValues';
+import { addToken, deleteToken, makeActive } from '../_action';
+import { openNotification } from '@/utils/helper';
 // import { useRouter } from 'next/navigation';
 // import { useRouter } from 'next/navigation';
 type Props = {
-  data: Key[] | null;
+  data: Token[] | null;
 };
 
-const columnHelper = createColumnHelper<Key>();
+const columnHelper = createColumnHelper<Token>();
 const KeyTable = ({ data: tableData }: Props) => {
   console.error('tableData', tableData);
-  // const [api, contextHolder] = notification.useNotification();
+  const [api, contextHolder] = notification.useNotification();
   const [data, setData] = React.useState(() => [...(tableData || [])]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     [],
@@ -40,11 +44,41 @@ const KeyTable = ({ data: tableData }: Props) => {
   //   console.log(' ', link);
   //   router.push(link);
   // };
-  const handleEditClick = (id: string) => {
-    console.error('id', id);
+  const handleEditClick = async (id: string) => {
+    try {
+      await makeActive(id);
+      openNotification({
+        type: 'success',
+        title: 'Added',
+        description: 'Token made active successfully',
+        api,
+      });
+    } catch {
+      openNotification({
+        type: 'error',
+        title: 'Failed',
+        description: 'Failed to make token active',
+        api,
+      });
+    }
   };
-  const handleDeleteClick = (id: string) => {
-    console.error('id', id);
+  const handleDeleteClick = async (id: string) => {
+    try {
+      await deleteToken(id);
+      openNotification({
+        type: 'success',
+        title: 'Added',
+        description: 'Token deleted successfully',
+        api,
+      });
+    } catch {
+      openNotification({
+        type: 'error',
+        title: 'Failed',
+        description: 'Failed to delete token',
+        api,
+      });
+    }
   };
   const columns = [
     columnHelper.accessor('id', {
@@ -111,37 +145,31 @@ const KeyTable = ({ data: tableData }: Props) => {
             </span>
           )}
         >
-          {[
-            {
-              icon: 'solar:pen-new-square-broken',
-              color: 'success',
-              listtitle: 'Make Active',
-              handleClick: () => {
-                handleEditClick(info.row.original.id);
-              },
-            },
-            {
-              icon: 'solar:trash-bin-minimalistic-outline',
-              color: 'error',
-              listtitle: 'Delete',
-              handleClick: () => {
-                handleDeleteClick(info.row.original.id);
-              },
-            },
-          ].map((item, index) => (
+          {info.row.original.status === 'AVAILABLE' && (
             <Dropdown.Item
-              key={index}
-              onClick={item.handleClick}
+              onClick={() => handleEditClick(info.row.original.id)}
               className="flex gap-3"
             >
               <Icon
-                icon={item.icon}
+                icon="solar:pen-new-square-broken"
                 height={18}
-                className={`text-${item.color}`}
+                className="text-success"
               />
-              <span>{item.listtitle}</span>
+              <span>Make Active</span>
             </Dropdown.Item>
-          ))}
+          )}
+
+          <Dropdown.Item
+            onClick={() => handleDeleteClick(info.row.original.id)}
+            className="flex gap-3"
+          >
+            <Icon
+              icon="solar:trash-bin-minimalistic-outline"
+              height={18}
+              className="text-error"
+            />
+            <span>Delete</span>
+          </Dropdown.Item>
         </Dropdown>
       ),
     }),
@@ -166,19 +194,33 @@ const KeyTable = ({ data: tableData }: Props) => {
   useEffect(() => {
     setData(tableData ?? []);
   }, [tableData]);
-
+  const [modalState, setModalState] = React.useState(false);
+  const handleCancelClick = () => {
+    setModalState(false);
+  };
   return (
     <>
       <TitleIconCard
-        // renderIcon={() => (
-        //   <Icon icon="solar:add-circle-linear" width="1.2rem" height="1.2rem" />
-        // )}
-        addFormLink="/payroll/bonus/add"
+        renderIcon={() => (
+          <Icon
+            onClick={() => setModalState(true)}
+            icon="solar:add-circle-linear"
+            width="1.2rem"
+            height="1.2rem"
+          />
+        )}
         title="Key List"
       >
-        {/* {contextHolder} */}
-        <Table<Key> table={table} />
+        {contextHolder}
+        <Table<Token> table={table} />
       </TitleIconCard>
+      <TokenFormModal
+        modalState={modalState}
+        handleCancelClick={handleCancelClick}
+        handleOk={handleCancelClick}
+        action={addToken}
+        initialValues={tokenFormInitialValues}
+      />
     </>
   );
 };

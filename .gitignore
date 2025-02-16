@@ -35,3 +35,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Prisma
+prisma/dev.db         # SQLite database file (if using SQLite)
+prisma/dev.db-journal # SQLite journal file
+prisma/migrations/    # Generated migration files (optional, can be ignored if you prefer to generate locally)
+prisma/*.sqlite       # Ignore all SQLite database files
+prisma/*.sqlite-journal # Ignore SQLite journal files

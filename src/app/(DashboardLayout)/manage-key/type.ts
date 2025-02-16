@@ -1,13 +1,15 @@
-type Key = {
+type Token = {
   id: string;
   name: string;
   token: string;
   status: string;
 };
+
+type TokenFormData = Pick<Token, 'name' | 'token'>;
 type KeyResult = {
   status: number;
   message: string;
-  data: Key[];
+  data: Token[];
 };
 
-export type { Key, KeyResult };
+export type { Token, KeyResult, TokenFormData };

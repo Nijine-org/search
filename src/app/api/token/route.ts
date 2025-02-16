@@ -4,7 +4,6 @@ import prisma from '../../../../lib/prisma';
 export async function POST(req: Request) {
   try {
     const { token, name } = await req.json();
-
     if (!token || !name) {
       return NextResponse.json(
         { error: 'Token and name are required' },
