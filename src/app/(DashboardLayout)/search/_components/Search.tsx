@@ -170,7 +170,6 @@ const Search = ({ data: tableData }: Props) => {
         // )}
         onDownload={handleDownload}
         total={tableData?.feed['openSearch:itemsPerPage'] ?? 0}
-        addFormLink="/payroll/bonus/add"
         title="Bonus List"
       >
         {/* {contextHolder} */}
